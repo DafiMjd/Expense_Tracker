@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
         RepositoryProvider(create: (context) => TransactionCategoryService()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData.light(),
         darkTheme: ThemeData.dark(),

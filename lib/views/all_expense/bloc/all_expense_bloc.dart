@@ -28,12 +28,19 @@ class AllExpenseBloc extends Bloc<AllExpenseEvent, AllExpenseState> {
       var groupedTransactions = groupBy(
           transactions, (Transaction obj) => Transaction.getMonth(obj.date));
 
-      Map<String, double> earned = Map<String,double>();
+      Map<String, double> earned = Map<String, double>();
+      Map<String, double> spent = Map<String, double>();
       groupedTransactions.forEach(
-        (key, value) => earned[key] = 600,
+        (key, value) {
+          earned[key] = _countEarnedOrSpent(transactions, false);
+          spent[key] = _countEarnedOrSpent(transactions, true);
+        }
       );
 
-      emit(AllExpenseTransactionsLoadedState(groupedTransactions, earned, earned));
+
+
+      emit(AllExpenseTransactionsLoadedState(
+          groupedTransactions, earned, spent));
     });
 
     on<AllExpenseDeleteTransactionEvent>((event, emit) {
@@ -49,5 +56,25 @@ class AllExpenseBloc extends Bloc<AllExpenseEvent, AllExpenseState> {
     });
   }
 
-  // double _countEarned() {}
+  double _countEarnedOrSpent(List<Transaction> transactions, bool isSpent) {
+    double money = 0;
+
+    if (isSpent) {
+      transactions.forEach((element) {
+        if (element.isCredit) {
+          money += element.amount;
+        }
+      });
+
+      return money;
+    }
+
+    transactions.forEach((element) {
+      if (!element.isCredit) {
+        money += element.amount;
+      }
+    });
+
+    return money;
+  }
 }

@@ -74,25 +74,25 @@ class AllExpensesPage extends StatelessWidget {
                                       style: TextStyle(
                                           fontSize: 18, color: Colors.white),
                                     ),
-                                    // Row(
-                                    //   children: [
-                                    //     Text(
-                                    //       'Earned: ' + Formatter.formatMoney(state.spent[key]!),
-                                    //       style: TextStyle(
-                                    //           fontSize: 18,
-                                    //           color: Colors.white),
-                                    //     ),
-                                    //     SizedBox(
-                                    //       width: 10,
-                                    //     ),
-                                    //     Text(
-                                    //       'Spent: ' + Formatter.formatMoney(state.spent[key]!) ,
-                                    //       style: TextStyle(
-                                    //           fontSize: 18,
-                                    //           color: Colors.white),
-                                    //     ),
-                                    //   ],
-                                    // ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Earned: ' + Formatter.formatMoney(state.earned[key]!),
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          'Spent: ' + Formatter.formatMoney(state.spent[key]!) ,
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
                                   
                                   ],
                                 ),

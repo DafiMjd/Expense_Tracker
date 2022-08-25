@@ -5,16 +5,16 @@ class Formatter {
     String rp = 'Rp. ';
 
     if (money < 1000) {
-      return rp + money.toString();
+      return rp + money.toStringAsFixed(0);
     } else {
       if (money >= 1000000000) {
         return '~';
       } else if (money >= 1000000) {
         money /= 1000000;
-        return rp + money.toStringAsFixed(1) + ' M';
+        return rp + money.toStringAsFixed(0) + ' M';
       } else if (money >= 1000) {
         money /= 1000;
-        return rp + money.toStringAsFixed(1) + ' K';
+        return rp + money.toStringAsFixed(0) + ' K';
       } else {
         return '~';
       }

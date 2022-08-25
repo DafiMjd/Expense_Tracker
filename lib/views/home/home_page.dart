@@ -26,14 +26,14 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Expense Tracker"),
-          actions: [
-            Container(
-                margin: EdgeInsets.all(8),
-                child: Icon(
-                  Icons.account_circle,
-                  size: 28,
-                ))
-          ],
+          // actions: [
+          //   Container(
+          //       margin: EdgeInsets.all(8),
+          //       child: Icon(
+          //         Icons.account_circle,
+          //         size: 28,
+          //       ))
+          // ],
         ),
         body: BlocConsumer<HomeBloc, HomeState>(
           listener: (context, state) {
